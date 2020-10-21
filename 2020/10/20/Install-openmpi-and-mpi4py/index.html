@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Autonomous Driving, Deep Learning">
+    <meta name="keyword"  content="">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+        Install openmpi and mpi4py - Yu HU
+        
+    </title>
+
+    <!-- Custom CSS -->
+    
+<link rel="stylesheet" href="../../../../css/aircloud.css">
+
+    
+<link rel="stylesheet" href="../../../../css/gitment.css">
+
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_pl6z7sid89qkt9.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i> Simple is beautiful </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar ">
+            <img src="/img/avatar.jpg" />
+        </div>
+        <div class="name">
+            <i>Yu HU</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li >
+                <a href="../../../../index.html">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>HOME</span>
+                </a>
+            </li>
+            <li >
+                <a href="../../../../publications">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>PUBLICATIONS</span>
+                </a>
+            </li>
+            <li >
+                <a href="/projects/">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>PROJECTS</span>
+                </a>
+            </li>
+            <li >
+                <a href="../../../../archives">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>ARCHIVES</span>
+                </a>
+            </li>
+            <li >
+                <a href="/ans/">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>ANS GROUP</span>
+                </a>
+            </li>
+            <li >
+                <a href="/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>ABOUT</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#在Unbuntu-16-04上安装openmpi和mpi4py"><span class="toc-text">在Unbuntu 16.04上安装openmpi和mpi4py</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#下载openmpi"><span class="toc-text">下载openmpi</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安装openmpi"><span class="toc-text">安装openmpi</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#添加库共享路径"><span class="toc-text">添加库共享路径</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#进行测试"><span class="toc-text">进行测试</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安装mpi4py"><span class="toc-text">安装mpi4py</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#测试mpi4py"><span class="toc-text">测试mpi4py</span></a></li></ol></li></ol>
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input"/>
+            <span id="begin-search">search</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+        <div class="index-about-mobile">
+            <i> Simple is beautiful </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        Install openmpi and mpi4py
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">Post：<span>2020-10-20 15:21:01</span></span>
+        
+        </span>
+        <span class="attr">Visit：<span id="busuanzi_value_page_pv"></span>
+</span>
+</span>
+    </div>
+    <div class="post-content ">
+        <h1 id="在Unbuntu-16-04上安装openmpi和mpi4py"><a href="#在Unbuntu-16-04上安装openmpi和mpi4py" class="headerlink" title="在Unbuntu 16.04上安装openmpi和mpi4py"></a>在Unbuntu 16.04上安装openmpi和mpi4py</h1><p>想重现开源项目<a href="https://github.com/tomgoldstein/loss-landscape" target="_blank" rel="noopener">https://github.com/tomgoldstein/loss-landscape</a>，因此需要安装openmpi和mpi4py。该开源项目所需的numpy、h5py、matplotlib和scipy，均可在pycharm中安装，openmpi和mpi4py则需单独安装。</p>
+<h2 id="下载openmpi"><a href="#下载openmpi" class="headerlink" title="下载openmpi"></a>下载openmpi</h2><p>从<a href="http://www.open-mpi.org/software/ompi/v4.0下载openmpi-4.0.5.tar.gz" target="_blank" rel="noopener">www.open-mpi.org/software/ompi/v4.0下载openmpi-4.0.5.tar.gz</a></p>
+<p>解压openmpi-4.0.5.tar.gz，进入openmpi-4.0.5目录</p>
+<h2 id="安装openmpi"><a href="#安装openmpi" class="headerlink" title="安装openmpi"></a>安装openmpi</h2><pre><code>./configure
+sudo make all install</code></pre><h2 id="添加库共享路径"><a href="#添加库共享路径" class="headerlink" title="添加库共享路径"></a>添加库共享路径</h2><pre><code>sudo gedit /etc/profile</code></pre><p>在profile文件的最后，加上一行(根据自己本机上openmpi的安装路径来写)：</p>
+<p>export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib/openmpi </p>
+<p>使该配置文件生效：</p>
+<pre><code>source /etc/profile</code></pre><h2 id="进行测试"><a href="#进行测试" class="headerlink" title="进行测试"></a>进行测试</h2><pre><code>cd openmpi-4.0.5/examples
+make
+mpirun -np 4 hello_c</code></pre><p>结果在make时报错:</p>
+<p>mpicc: error while loading shared libraries: libopen-pal.so.4: cannot open shared object file:No such file or directory</p>
+<p>于是在home下执行apt-file search libopen-pal.so.4</p>
+<p>由于不曾安装过apt-file，系统提示安装。还需要先把apt-get给update了。直接apt-get update后运行apt-file search libopen-pal.so.4还是报错。尝试了以下步骤后成功：</p>
+<pre><code>add-apt-repository main
+add-apt-repository universe
+add-apt-repository restricted
+add-apt-repository multiverse
+apt-get update
+apt-get install apt-file
+apt-file search libopen-pal.so.4</code></pre><p>再次进行测试，即可成功。其中mpirun -np 4 hello_c的数字4，表示进程数为4。</p>
+<p><img src="https://MeridianCAS.github.io/2020/10/20/Install-openmpi-and-mpi4py/test-result.PNG" alt="hello_c"></p>
+<h2 id="安装mpi4py"><a href="#安装mpi4py" class="headerlink" title="安装mpi4py"></a>安装mpi4py</h2><p>从<a href="https://pypi.org/project/mpi4py/#files" target="_blank" rel="noopener">https://pypi.org/project/mpi4py/#files</a>下载mpi4py-3.0.3.tar.gz </p>
+<pre><code>tar -xvzf mpi4py-3.0.3.tar.gz
+cd mpi4py-3.0.3
+python setup.py build
+python setup.py install</code></pre><h2 id="测试mpi4py"><a href="#测试mpi4py" class="headerlink" title="测试mpi4py"></a>测试mpi4py</h2><p>写一段简单的程序来测试 mpi4py 是否安装好及能否正常使用：</p>
+<pre><code># mpi_helloworld.py
+
+from mpi4py import MPI
+
+
+comm = MPI.COMM_WORLD
+size = comm.Get_size()
+rank = comm.Get_rank()
+node_name = MPI.Get_processor_name() # get the name of the node
+
+print &apos;Hello world from process %d at %s.&apos; % (rank, node_name)</code></pre><p>用下面的命令运行该程序：</p>
+<pre><code>mpiexec -n 3 python mpi_helloworld.py</code></pre><p>显示：</p>
+<pre><code>Hello world from process 2 at node1.
+Hello world from process 0 at node1.
+Hello world from process 1 at node1.</code></pre>
+        
+        <br />
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+
+        <div id="lv-container">
+        </div>
+
+    </div>
+</div>
+
+    </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        
+
+        
+
+        
+
+        
+        <li>
+            <a target="_blank"  href="https://github.com/MeridianCAS">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-github"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+
+    </ul>
+    
+    <p>
+        <span id="busuanzi_container_site_pv">
+            <span id="busuanzi_value_site_pv"></span>PV
+        </span>
+        <span id="busuanzi_container_site_uv">
+            <span id="busuanzi_value_site_uv"></span>UV
+        </span>
+        Created By <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>  Theme <a href="https://github.com/aircloud/hexo-theme-aircloud" target="_blank" rel="noopener">AirCloud</a></p>
+</footer>
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = "search.xml"
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+
+<script src="../../../../js/index.js"></script>
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+</html>

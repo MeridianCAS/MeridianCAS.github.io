@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search> 
+  
+  
+    
+    <entry>
+      <title>Install openmpi and mpi4py</title>
+      <link href="/2020/10/20/Install-openmpi-and-mpi4py/"/>
+      <url>/2020/10/20/Install-openmpi-and-mpi4py/</url>
+      
+        <content type="html"><![CDATA[<h1 id="在Unbuntu-16-04上安装openmpi和mpi4py"><a href="#在Unbuntu-16-04上安装openmpi和mpi4py" class="headerlink" title="在Unbuntu 16.04上安装openmpi和mpi4py"></a>在Unbuntu 16.04上安装openmpi和mpi4py</h1><p>想重现开源项目<a href="https://github.com/tomgoldstein/loss-landscape" target="_blank" rel="noopener">https://github.com/tomgoldstein/loss-landscape</a>，因此需要安装openmpi和mpi4py。该开源项目所需的numpy、h5py、matplotlib和scipy，均可在pycharm中安装，openmpi和mpi4py则需单独安装。</p><h2 id="下载openmpi"><a href="#下载openmpi" class="headerlink" title="下载openmpi"></a>下载openmpi</h2><p>从<a href="http://www.open-mpi.org/software/ompi/v4.0下载openmpi-4.0.5.tar.gz" target="_blank" rel="noopener">www.open-mpi.org/software/ompi/v4.0下载openmpi-4.0.5.tar.gz</a></p><p>解压openmpi-4.0.5.tar.gz，进入openmpi-4.0.5目录</p><h2 id="安装openmpi"><a href="#安装openmpi" class="headerlink" title="安装openmpi"></a>安装openmpi</h2><pre><code>./configuresudo make all install</code></pre><h2 id="添加库共享路径"><a href="#添加库共享路径" class="headerlink" title="添加库共享路径"></a>添加库共享路径</h2><pre><code>sudo gedit /etc/profile</code></pre><p>在profile文件的最后，加上一行(根据自己本机上openmpi的安装路径来写)：</p><p>export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib/openmpi </p><p>使该配置文件生效：</p><pre><code>source /etc/profile</code></pre><h2 id="进行测试"><a href="#进行测试" class="headerlink" title="进行测试"></a>进行测试</h2><pre><code>cd openmpi-4.0.5/examplesmakempirun -np 4 hello_c</code></pre><p>结果在make时报错:</p><p>mpicc: error while loading shared libraries: libopen-pal.so.4: cannot open shared object file:No such file or directory</p><p>于是在home下执行apt-file search libopen-pal.so.4</p><p>由于不曾安装过apt-file，系统提示安装。还需要先把apt-get给update了。直接apt-get update后运行apt-file search libopen-pal.so.4还是报错。尝试了以下步骤后成功：</p><pre><code>add-apt-repository mainadd-apt-repository universeadd-apt-repository restrictedadd-apt-repository multiverseapt-get updateapt-get install apt-fileapt-file search libopen-pal.so.4</code></pre><p>再次进行测试，即可成功。其中mpirun -np 4 hello_c的数字4，表示进程数为4。</p><p><img src="https://MeridianCAS.github.io/2020/10/20/Install-openmpi-and-mpi4py/test-result.PNG" alt="hello_c"></p><h2 id="安装mpi4py"><a href="#安装mpi4py" class="headerlink" title="安装mpi4py"></a>安装mpi4py</h2><p>从<a href="https://pypi.org/project/mpi4py/#files" target="_blank" rel="noopener">https://pypi.org/project/mpi4py/#files</a>下载mpi4py-3.0.3.tar.gz </p><pre><code>tar -xvzf mpi4py-3.0.3.tar.gzcd mpi4py-3.0.3python setup.py buildpython setup.py install</code></pre><h2 id="测试mpi4py"><a href="#测试mpi4py" class="headerlink" title="测试mpi4py"></a>测试mpi4py</h2><p>写一段简单的程序来测试 mpi4py 是否安装好及能否正常使用：</p><pre><code># mpi_helloworld.pyfrom mpi4py import MPIcomm = MPI.COMM_WORLDsize = comm.Get_size()rank = comm.Get_rank()node_name = MPI.Get_processor_name() # get the name of the nodeprint &apos;Hello world from process %d at %s.&apos; % (rank, node_name)</code></pre><p>用下面的命令运行该程序：</p><pre><code>mpiexec -n 3 python mpi_helloworld.py</code></pre><p>显示：</p><pre><code>Hello world from process 2 at node1.Hello world from process 0 at node1.Hello world from process 1 at node1.</code></pre>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>AddSideBarItem</title>
+      <link href="/2020/04/30/AddSideBarItem/"/>
+      <url>/2020/04/30/AddSideBarItem/</url>
+      
+        <content type="html"><![CDATA[<h1 id="在Sidebar里添加item"><a href="#在Sidebar里添加item" class="headerlink" title="在Sidebar里添加item"></a>在Sidebar里添加item</h1><p>以添加Projects为例，展示如何在sidebar里添加一个新的item。</p><p>第一步，用hexo新建一个名为projects的page，在source目录下就会新建一个projects目录。目录里有一个index.md文件和一个index子目录。</p><pre><code>hexo new page projects</code></pre><p>这里要记得修改index.md的头部：加上layout并改为缩进格式，才能在点击侧边栏的”PROJECTS”时，显示相应的index.html内容。</p><pre><code>layout: &quot;about&quot;title: projectsdate: 2020-04-30 10:27:26</code></pre><p>第二步，在根目录的_config.yml文件中的Directory中添加project_dir: projects，如下所示：</p><pre><code>source_dir: sourcepublic_dir: publicpublication_dir: publicationsproject_dir: projectsarchive_dir: archivesans_dir: anscode_dir: downloads/codei18n_dir: :langskip_render: README.md</code></pre><p>第三步，在themes\aircloud\的languages目录下（例如，en.yml和zh.yml在我的“MeridianCAS.github.io\themes\aircloud\languages”目录下），分别为en.yml和zh.yml添加关于project的说明。。</p><p>在en.xml中为：</p><pre><code>home: HOMEpublications: PUBLICATIONSprojects: PROJECTSarchives: ARCHIVESans: ANS GROUPabout: ABOUT</code></pre><p>在zh.xml中为：</p><pre><code>home: 主页publications: 论文projects: 项目archives: 存档ans: 自主导航研究组about: 关于</code></pre><p>第四步，在themes\aircloud\目录下的_config.yml中，添加关于projects的内容。</p><p>在menu中添加projects对应的目录：</p><pre><code>home: /publications: /publicationsprojects: /projectsarchives: /archivesans: /ansabout: /about </code></pre><p>在menu_icons添加projects对应的图标为archive（偷懒直接用了aircloud主题里已有的图标）：</p><pre><code>enable: truehome: homeabout: user    publications: archiveprojects: archiveans: tagsarchives: archive</code></pre><p>第五步，在themes\aircloud\layout_partial的nav.ejs中，添加关于projects的内容。</p><pre><code>&lt;li &lt;% if(is_current(&apos;project&apos;)){ %&gt; &lt;%- &quot;class=active&quot; %&gt; &lt;% } %&gt;&gt;    &lt;a href=&quot;&lt;%= config.root %&gt;&lt;%- &apos;projects/&apos; %&gt;&quot;&gt;        &lt;i class=&quot;iconfont icon-guidang2&quot;&gt;&lt;/i&gt;        &lt;span&gt;&lt;%= __(&apos;nav.projects&apos;) %&gt;&lt;/span&gt;    &lt;/a&gt;&lt;/li&gt;</code></pre><p>第六步，运行hexo clean、hexo g和hexo d，就能看到个人主页上增加了PROJECTS栏目。</p><pre><code>hexo cleanhexo ghexo d</code></pre>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>InstallUbuntu2004</title>
+      <link href="/2020/04/24/InstallUbuntu2004/"/>
+      <url>/2020/04/24/InstallUbuntu2004/</url>
+      
+        <content type="html"><![CDATA[<h1 id="在Win10上安装Ubuntu-20-04-LTS及图形化界面"><a href="#在Win10上安装Ubuntu-20-04-LTS及图形化界面" class="headerlink" title="在Win10上安装Ubuntu 20.04 LTS及图形化界面"></a>在Win10上安装Ubuntu 20.04 LTS及图形化界面</h1><p>本文主要参考了《<a href="https://blog.csdn.net/daybreak222/article/details/87968078" target="_blank" rel="noopener">Win10安装Ubuntu子系统及图形化界面详细教程</a>》的安装步骤。</p><p>因项目需要通过Ubuntu下的可视化窗口下载软件，又不想在自己的Surface上安装双系统，看到4月19号的消息说Ubuntu 20.04 LTS上架Win10应用商店，于是昨天晚上在Win10上安装了Ubuntu 20.04 LTS，安装过程非常简单顺利。安装完成后，就能在Win10的程序栏中看见Ubuntu了，如图1所示：</p><p><img src="https://MeridianCAS.github.io/2020/04/24/InstallUbuntu2004/InstalledUbuntu.PNG" alt="InstalledUbuntu"></p><p>图1 安装后的Ubuntu</p><p>只是在安装图形化界面时，由于没有换源，下载速度太慢被我Crtl^C终止，导致安装包的依赖关系错误，无论是clean还是remove，都解决不了此问题。于是今天从Win10控制面板的应用程序中卸载了Ubuntu20.04，如图2所示，重新安装，问题解决。</p><p><img src="https://MeridianCAS.github.io/2020/04/24/InstallUbuntu2004/UninstallUbuntu.PNG" alt="UninstallUbuntu"></p><p>图2 卸载Ubuntu</p><p>关于换国内源，可参考《<a href="https://blog.csdn.net/xiangxianghehe/article/details/105688062" target="_blank" rel="noopener">Ubuntu 20.04换国内源 清华源 阿里源 中科大源 163源</a>》。</p><p>与《<a href="https://blog.csdn.net/daybreak222/article/details/87968078" target="_blank" rel="noopener">Win10安装Ubuntu子系统及图形化界面详细教程</a>》第5.2步把三个安装包放一起安装不同的是，我分别安装的三个包，确保网速慢时，也不至于必须开着Surface下载。好在我用的清华源，三个安装包所需的安装时间也就半小时左右，速度很快。</p><pre><code>sudo apt-get install ubuntu-desktop  sudo apt-get install unity  sudo apt-get install compizconfig-settings-manager</code></pre><p>最终成功显示了Ubuntu桌面，如图3所示：</p><p><img src="https://MeridianCAS.github.io/2020/04/24/InstallUbuntu2004/UbuntuDesktop.PNG" alt="UbuntuDesktop"></p><p>图3 Ubuntu桌面</p><p>不过Firefox浏览器打开，输入网址回车后报错，还得继续折腾 :(</p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+  
+  
+</search>

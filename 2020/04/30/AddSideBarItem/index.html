@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Autonomous Driving, Deep Learning">
+    <meta name="keyword"  content="">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+        AddSideBarItem - Yu HU
+        
+    </title>
+
+    <!-- Custom CSS -->
+    
+<link rel="stylesheet" href="../../../../css/aircloud.css">
+
+    
+<link rel="stylesheet" href="../../../../css/gitment.css">
+
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_pl6z7sid89qkt9.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i> Simple is beautiful </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar ">
+            <img src="/img/avatar.jpg" />
+        </div>
+        <div class="name">
+            <i>Yu HU</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li >
+                <a href="../../../../index.html">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>HOME</span>
+                </a>
+            </li>
+            <li >
+                <a href="../../../../publications">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>PUBLICATIONS</span>
+                </a>
+            </li>
+            <li >
+                <a href="/projects/">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>PROJECTS</span>
+                </a>
+            </li>
+            <li >
+                <a href="../../../../archives">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>ARCHIVES</span>
+                </a>
+            </li>
+            <li >
+                <a href="/ans/">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>ANS GROUP</span>
+                </a>
+            </li>
+            <li >
+                <a href="/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>ABOUT</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#在Sidebar里添加item"><span class="toc-text">在Sidebar里添加item</span></a></li></ol>
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input"/>
+            <span id="begin-search">search</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+        <div class="index-about-mobile">
+            <i> Simple is beautiful </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        AddSideBarItem
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">Post：<span>2020-04-30 10:37:02</span></span>
+        
+        </span>
+        <span class="attr">Visit：<span id="busuanzi_value_page_pv"></span>
+</span>
+</span>
+    </div>
+    <div class="post-content ">
+        <h1 id="在Sidebar里添加item"><a href="#在Sidebar里添加item" class="headerlink" title="在Sidebar里添加item"></a>在Sidebar里添加item</h1><p>以添加Projects为例，展示如何在sidebar里添加一个新的item。</p>
+<p>第一步，用hexo新建一个名为projects的page，在source目录下就会新建一个projects目录。目录里有一个index.md文件和一个index子目录。</p>
+<pre><code>hexo new page projects</code></pre><p>这里要记得修改index.md的头部：加上layout并改为缩进格式，才能在点击侧边栏的”PROJECTS”时，显示相应的index.html内容。</p>
+<pre><code>layout: &quot;about&quot;
+title: projects
+date: 2020-04-30 10:27:26</code></pre><p>第二步，在根目录的_config.yml文件中的Directory中添加project_dir: projects，如下所示：</p>
+<pre><code>source_dir: source
+public_dir: public
+publication_dir: publications
+project_dir: projects
+archive_dir: archives
+ans_dir: ans
+code_dir: downloads/code
+i18n_dir: :lang
+skip_render: README.md</code></pre><p>第三步，在themes\aircloud\的languages目录下（例如，en.yml和zh.yml在我的“MeridianCAS.github.io\themes\aircloud\languages”目录下），分别为en.yml和zh.yml添加关于project的说明。。</p>
+<p>在en.xml中为：</p>
+<pre><code>home: HOME
+publications: PUBLICATIONS
+projects: PROJECTS
+archives: ARCHIVES
+ans: ANS GROUP
+about: ABOUT</code></pre><p>在zh.xml中为：</p>
+<pre><code>home: 主页
+publications: 论文
+projects: 项目
+archives: 存档
+ans: 自主导航研究组
+about: 关于</code></pre><p>第四步，在themes\aircloud\目录下的_config.yml中，添加关于projects的内容。</p>
+<p>在menu中添加projects对应的目录：</p>
+<pre><code>home: /
+publications: /publications
+projects: /projects
+archives: /archives
+ans: /ans
+about: /about </code></pre><p>在menu_icons添加projects对应的图标为archive（偷懒直接用了aircloud主题里已有的图标）：</p>
+<pre><code>enable: true
+home: home
+about: user    
+publications: archive
+projects: archive
+ans: tags
+archives: archive</code></pre><p>第五步，在themes\aircloud\layout_partial的nav.ejs中，添加关于projects的内容。</p>
+<pre><code>&lt;li &lt;% if(is_current(&apos;project&apos;)){ %&gt; &lt;%- &quot;class=active&quot; %&gt; &lt;% } %&gt;&gt;
+    &lt;a href=&quot;&lt;%= config.root %&gt;&lt;%- &apos;projects/&apos; %&gt;&quot;&gt;
+        &lt;i class=&quot;iconfont icon-guidang2&quot;&gt;&lt;/i&gt;
+        &lt;span&gt;&lt;%= __(&apos;nav.projects&apos;) %&gt;&lt;/span&gt;
+    &lt;/a&gt;
+&lt;/li&gt;</code></pre><p>第六步，运行hexo clean、hexo g和hexo d，就能看到个人主页上增加了PROJECTS栏目。</p>
+<pre><code>hexo clean
+hexo g
+hexo d</code></pre>
+        
+        <br />
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+
+        <div id="lv-container">
+        </div>
+
+    </div>
+</div>
+
+    </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        
+
+        
+
+        
+
+        
+        <li>
+            <a target="_blank"  href="https://github.com/MeridianCAS">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-github"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+
+    </ul>
+    
+    <p>
+        <span id="busuanzi_container_site_pv">
+            <span id="busuanzi_value_site_pv"></span>PV
+        </span>
+        <span id="busuanzi_container_site_uv">
+            <span id="busuanzi_value_site_uv"></span>UV
+        </span>
+        Created By <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>  Theme <a href="https://github.com/aircloud/hexo-theme-aircloud" target="_blank" rel="noopener">AirCloud</a></p>
+</footer>
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = "search.xml"
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+
+<script src="../../../../js/index.js"></script>
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+</html>
