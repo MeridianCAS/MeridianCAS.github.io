@@ -160,7 +160,7 @@ add-apt-repository multiverse
 apt-get update
 apt-get install apt-file
 apt-file search libopen-pal.so.4</code></pre><p>再次进行测试，即可成功。其中mpirun -np 4 hello_c的数字4，表示进程数为4。</p>
-<p><img src="https://github.com/MeridianCAS/MeridianCAS.github.io/blob/master/2020/10/20/Install-openmpi-and-mpi4py/openmpi-test-result.png" alt="hello_c"></p>
+<p><img src="https://MeridianCAS.github.io/2020/10/20/Install-openmpi-and-mpi4py/openmpi-test-result.png" alt="hello_c"></p>
 <h2 id="安装mpi4py"><a href="#安装mpi4py" class="headerlink" title="安装mpi4py"></a>安装mpi4py</h2><p>从<a href="https://pypi.tuna.tsinghua.edu.cn/simple/mpi4py/" target="_blank" rel="noopener">https://pypi.tuna.tsinghua.edu.cn/simple/mpi4py/</a>下载mpi4py-3.0.3.tar.gz，然后解压安装：</p>
 <pre><code>tar -xvzf mpi4py-3.0.3.tar.gz
 cd mpi4py-3.0.3
@@ -168,7 +168,7 @@ python setup.py build
 python setup.py install</code></pre><h2 id="测试mpi4py"><a href="#测试mpi4py" class="headerlink" title="测试mpi4py"></a>测试mpi4py</h2><p>在demo目录下运行helloworld.py来测试 mpi4py 是否安装好及能否正常使用：</p>
 <pre><code>cd demo</code></pre><p>用下面的命令运行该程序：</p>
 <pre><code>mpiexec -n 3 python helloworld.py</code></pre><p>显示：</p>
-<p><img src="https://github.com/MeridianCAS/MeridianCAS.github.io/blob/master/2020/10/20/Install-openmpi-and-mpi4py/mpi4py-test-result.png" alt="helloworld"></p>
+<p><img src="https://MeridianCAS.github.io/2020/10/20/Install-openmpi-and-mpi4py/mpi4py-test-result.png" alt="helloworld"></p>
 
         
         <br />
