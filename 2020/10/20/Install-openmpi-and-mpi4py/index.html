@@ -140,7 +140,9 @@
 </span>
     </div>
     <div class="post-content ">
-        <h1 id="在Unbuntu-16-04上安装openmpi和mpi4py"><a href="#在Unbuntu-16-04上安装openmpi和mpi4py" class="headerlink" title="在Unbuntu 16.04上安装openmpi和mpi4py"></a>在Unbuntu 16.04上安装openmpi和mpi4py</h1><p>想重现开源项目<a href="https://github.com/tomgoldstein/loss-landscape" target="_blank" rel="noopener">https://github.com/tomgoldstein/loss-landscape</a>，因此需要安装openmpi和mpi4py。该开源项目所需的numpy、h5py、matplotlib和scipy，均可在pycharm中安装，openmpi和mpi4py则需单独安装。（注：后来发现在pycharm里无法直接运行mpi4py命令，外网上有比较高阶的方法，但看了半天还是不知咋整，于是转而在系统控制台下运行——会提示缺少了哪些package，根据提示，用sudo pip install xxxx逐个安装就好）。</p>
+        <h1 id="在Unbuntu-16-04上安装openmpi和mpi4py"><a href="#在Unbuntu-16-04上安装openmpi和mpi4py" class="headerlink" title="在Unbuntu 16.04上安装openmpi和mpi4py"></a>在Unbuntu 16.04上安装openmpi和mpi4py</h1><p>想重现开源项目<a href="https://github.com/tomgoldstein/loss-landscape" target="_blank" rel="noopener">https://github.com/tomgoldstein/loss-landscape</a>，因此需要安装openmpi和mpi4py。该开源项目所需的numpy、h5py、matplotlib和scipy，均可在pycharm中安装，openmpi和mpi4py则需单独安装。（注：后来发现在pycharm里无法直接运行mpi4py命令，外网上有比较高阶的方法，但看了半天还是不知咋整，于是转而在系统控制台下运行——会提示缺少了哪些package，根据提示，用sudo pip install xxxx逐个安装就好。如果中间出现了一些小问题，那么把这些小问题放到搜索引擎里去查询，也能得到简单的解决方案）。</p>
+<p>这里先放一个运行了mpi4py命令后的效果：</p>
+<p><img src="https://MeridianCAS.github.io/2020/10/20/Install-openmpi-and-mpi4py/mpi4py-resnet.png" alt="resnet"></p>
 <h2 id="下载openmpi"><a href="#下载openmpi" class="headerlink" title="下载openmpi"></a>下载openmpi</h2><p>从<a href="http://www.open-mpi.org/software/ompi/v4.0下载openmpi-4.0.5.tar.gz" target="_blank" rel="noopener">www.open-mpi.org/software/ompi/v4.0下载openmpi-4.0.5.tar.gz</a></p>
 <p>解压openmpi-4.0.5.tar.gz，进入openmpi-4.0.5目录</p>
 <h2 id="安装openmpi"><a href="#安装openmpi" class="headerlink" title="安装openmpi"></a>安装openmpi</h2><pre><code>./configure
