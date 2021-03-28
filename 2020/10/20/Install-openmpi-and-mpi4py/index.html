@@ -26,7 +26,7 @@
     <link href="//at.alicdn.com/t/font_620856_pl6z7sid89qkt9.css" rel="stylesheet" type="text/css">
     <!-- ga & ba script hoook -->
     <script></script>
-<meta name="generator" content="Hexo 4.2.0"></head>
+<meta name="generator" content="Hexo 5.4.0"></head>
 
 
 <body>
@@ -98,7 +98,7 @@
     </div>
     
         <div id="toc" class="toc-article">
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#在Unbuntu-16-04上安装openmpi和mpi4py"><span class="toc-text">在Unbuntu 16.04上安装openmpi和mpi4py</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#下载openmpi"><span class="toc-text">下载openmpi</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安装openmpi"><span class="toc-text">安装openmpi</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#添加库共享路径"><span class="toc-text">添加库共享路径</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#进行测试"><span class="toc-text">进行测试</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安装mpi4py"><span class="toc-text">安装mpi4py</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#测试mpi4py"><span class="toc-text">测试mpi4py</span></a></li></ol></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9C%A8Unbuntu-16-04%E4%B8%8A%E5%AE%89%E8%A3%85openmpi%E5%92%8Cmpi4py"><span class="toc-text">在Unbuntu 16.04上安装openmpi和mpi4py</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8B%E8%BD%BDopenmpi"><span class="toc-text">下载openmpi</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85openmpi"><span class="toc-text">安装openmpi</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B7%BB%E5%8A%A0%E5%BA%93%E5%85%B1%E4%BA%AB%E8%B7%AF%E5%BE%84"><span class="toc-text">添加库共享路径</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%9B%E8%A1%8C%E6%B5%8B%E8%AF%95"><span class="toc-text">进行测试</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85mpi4py"><span class="toc-text">安装mpi4py</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B5%8B%E8%AF%95mpi4py"><span class="toc-text">测试mpi4py</span></a></li></ol></li></ol>
 </div>
     
 </div>
@@ -140,10 +140,10 @@
 </span>
     </div>
     <div class="post-content ">
-        <h1 id="在Unbuntu-16-04上安装openmpi和mpi4py"><a href="#在Unbuntu-16-04上安装openmpi和mpi4py" class="headerlink" title="在Unbuntu 16.04上安装openmpi和mpi4py"></a>在Unbuntu 16.04上安装openmpi和mpi4py</h1><p>想重现开源项目<a href="https://github.com/tomgoldstein/loss-landscape" target="_blank" rel="noopener">https://github.com/tomgoldstein/loss-landscape</a>，因此需要安装openmpi和mpi4py。该开源项目所需的numpy、h5py、matplotlib和scipy，均可在pycharm中安装，openmpi和mpi4py则需单独安装。（注：后来发现在pycharm里无法直接运行mpi4py命令，外网上有比较高阶的方法，但看了半天还是不知咋整，于是转而在系统控制台下运行——会提示缺少了哪些package，根据提示，用sudo pip install xxxx逐个安装就好。如果中间出现了一些小问题，那么把这些小问题放到搜索引擎里去查询，也能得到简单的解决方案）。</p>
+        <h1 id="在Unbuntu-16-04上安装openmpi和mpi4py"><a href="#在Unbuntu-16-04上安装openmpi和mpi4py" class="headerlink" title="在Unbuntu 16.04上安装openmpi和mpi4py"></a>在Unbuntu 16.04上安装openmpi和mpi4py</h1><p>想重现开源项目<a target="_blank" rel="noopener" href="https://github.com/tomgoldstein/loss-landscape">https://github.com/tomgoldstein/loss-landscape</a>，因此需要安装openmpi和mpi4py。该开源项目所需的numpy、h5py、matplotlib和scipy，均可在pycharm中安装，openmpi和mpi4py则需单独安装。（注：后来发现在pycharm里无法直接运行mpi4py命令，外网上有比较高阶的方法，但看了半天还是不知咋整，于是转而在系统控制台下运行——会提示缺少了哪些package，根据提示，用sudo pip install xxxx逐个安装就好。如果中间出现了一些小问题，那么把这些小问题放到搜索引擎里去查询，也能得到简单的解决方案）。</p>
 <p>这里先放一个运行了mpi4py命令后的效果：</p>
 <p><img src="https://MeridianCAS.github.io/2020/10/20/Install-openmpi-and-mpi4py/mpi4py-resnet.png" alt="resnet"></p>
-<h2 id="下载openmpi"><a href="#下载openmpi" class="headerlink" title="下载openmpi"></a>下载openmpi</h2><p>从<a href="http://www.open-mpi.org/software/ompi/v4.0下载openmpi-4.0.5.tar.gz" target="_blank" rel="noopener">www.open-mpi.org/software/ompi/v4.0下载openmpi-4.0.5.tar.gz</a></p>
+<h2 id="下载openmpi"><a href="#下载openmpi" class="headerlink" title="下载openmpi"></a>下载openmpi</h2><p>从<a target="_blank" rel="noopener" href="http://www.open-mpi.org/software/ompi/v4.0下载openmpi-4.0.5.tar.gz">www.open-mpi.org/software/ompi/v4.0下载openmpi-4.0.5.tar.gz</a></p>
 <p>解压openmpi-4.0.5.tar.gz，进入openmpi-4.0.5目录</p>
 <h2 id="安装openmpi"><a href="#安装openmpi" class="headerlink" title="安装openmpi"></a>安装openmpi</h2><pre><code>./configure
 sudo make all install</code></pre><h2 id="添加库共享路径"><a href="#添加库共享路径" class="headerlink" title="添加库共享路径"></a>添加库共享路径</h2><pre><code>sudo gedit /etc/profile</code></pre><p>在profile文件的最后，加上一行(根据自己本机上openmpi的安装路径来写)：</p>
@@ -163,7 +163,7 @@ apt-get update
 apt-get install apt-file
 apt-file search libopen-pal.so.4</code></pre><p>再次进行测试，即可成功。其中mpirun -np 4 hello_c的数字4，表示进程数为4。</p>
 <p><img src="https://MeridianCAS.github.io/2020/10/20/Install-openmpi-and-mpi4py/openmpi-test-result.png" alt="hello_c"></p>
-<h2 id="安装mpi4py"><a href="#安装mpi4py" class="headerlink" title="安装mpi4py"></a>安装mpi4py</h2><p>从<a href="https://pypi.tuna.tsinghua.edu.cn/simple/mpi4py/" target="_blank" rel="noopener">https://pypi.tuna.tsinghua.edu.cn/simple/mpi4py/</a>下载mpi4py-3.0.3.tar.gz，然后解压安装：</p>
+<h2 id="安装mpi4py"><a href="#安装mpi4py" class="headerlink" title="安装mpi4py"></a>安装mpi4py</h2><p>从<a target="_blank" rel="noopener" href="https://pypi.tuna.tsinghua.edu.cn/simple/mpi4py/">https://pypi.tuna.tsinghua.edu.cn/simple/mpi4py/</a>下载mpi4py-3.0.3.tar.gz，然后解压安装：</p>
 <pre><code>tar -xvzf mpi4py-3.0.3.tar.gz
 cd mpi4py-3.0.3
 python setup.py build
@@ -218,7 +218,7 @@ python setup.py install</code></pre><h2 id="测试mpi4py"><a href="#测试mpi4py
         <span id="busuanzi_container_site_uv">
             <span id="busuanzi_value_site_uv"></span>UV
         </span>
-        Created By <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>  Theme <a href="https://github.com/aircloud/hexo-theme-aircloud" target="_blank" rel="noopener">AirCloud</a></p>
+        Created By <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>  Theme <a target="_blank" rel="noopener" href="https://github.com/aircloud/hexo-theme-aircloud">AirCloud</a></p>
 </footer>
 
 
